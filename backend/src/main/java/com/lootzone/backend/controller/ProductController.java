@@ -1,5 +1,6 @@
 package com.lootzone.backend.controller;
 
+import com.lootzone.backend.exception.ProductNotFoundException;
 import com.lootzone.backend.model.Product;
 import com.lootzone.backend.service.ProductService;
 import org.springframework.web.bind.annotation.*;
