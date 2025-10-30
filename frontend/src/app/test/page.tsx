@@ -1,10 +1,12 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 export default function TestPage() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/hello")
+    fetch(`${process.env.NEXT_PUBLIC_API}/hello`)
       .then((res) => res.text())
       .then((data) => setMessage(data))
       .catch((err) => console.error(err));
