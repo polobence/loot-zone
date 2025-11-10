@@ -12,7 +12,7 @@ public class Product {
     private Long id;
 
     @Column(unique = true, nullable = false, updatable = false)
-    private final String publicId = UUID.randomUUID().toString();
+    private  String publicId = UUID.randomUUID().toString();
 
     private String name;
     private Double price;
@@ -41,6 +41,10 @@ public class Product {
 
     public String getPublicId() {
         return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
     }
 
     public String getName() {
