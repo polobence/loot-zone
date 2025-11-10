@@ -20,28 +20,26 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
+    public Optional<Product> getProductByPublicId(String publicId) {
+        return productRepository.findByPublicId(publicId);
     }
 
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(Long id, Product updatedProduct) {
-        return productRepository.findById(id)
-                .map(product -> {
-                    product.setName(updatedProduct.getName());
-                    product.setPrice(updatedProduct.getPrice());
-                    product.setDescription(updatedProduct.getDescription());
-                    product.setImageUrl(updatedProduct.getImageUrl());
-                    product.setCategory(updatedProduct.getCategory());
-                    return productRepository.save(product);
-                })
+    public Product updateProduct(String publicId, Product updatedProduct) {
+        Product existing = productRepository.findByPublicId(publicId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
+        existing.setName(updatedProduct.getName());
+        existing.setPrice(updatedProduct.getPrice());
+        existing.setDescription(updatedProduct.getDescription());
+        existing.setImageUrl(updatedProduct.getImageUrl());
+        existing.setCategory(updatedProduct.getCategory());
+        return productRepository.save(existing);
     }
 
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+    public void deleteProduct(String publicId) {
+        productRepository.deleteByPublicId(publicId);
     }
 }
