@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -18,7 +20,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/products`);
         if (!response.ok) throw new Error("Failed to fetch products");
         const data: Product[] = await response.json();
         setProducts(data);
@@ -44,13 +46,13 @@ const ProductList: React.FC = () => {
           <div
             key={product.publicId}
             className="border rounded-xl p-4 shadow hover:shadow-lg transition">
-            <Image
+            {/* <Image
               src={product.imageUrl}
               alt={product.name}
               width={500}
               height={300}
               className="w-full h-48 object-cover rounded-lg mb-4"
-            />
+            /> */}
             <h2 className="text-lg font-semibold">{product.name}</h2>
             <p className="text-gray-600">{product.category}</p>
             <p className="font-bold mt-2">${product.price.toFixed(2)}</p>
