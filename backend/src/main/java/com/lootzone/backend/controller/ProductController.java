@@ -22,10 +22,10 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.getProductById(id)
-                .orElseThrow(() -> new ProductNotFoundException(id));
+    @GetMapping("/{publicId}")
+    public Product getProductById(@PathVariable String publicId) {
+        return productService.getProductByPublicId(publicId)
+                .orElseThrow(() -> new ProductNotFoundException(publicId));
     }
 
     @PostMapping
@@ -33,14 +33,14 @@ public class ProductController {
         return productService.createProduct(product);
     }
 
-    @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        return productService.updateProduct(id, product);
+    @PutMapping("/{publicId}")
+    public Product updateProduct(@PathVariable String publicId, @RequestBody Product product) {
+        return productService.updateProduct(publicId, product);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
+    @DeleteMapping("/{publicId}")
+    public void deleteProduct(@PathVariable String publicId) {
+        productService.deleteProduct(publicId);
     }
 }
 
