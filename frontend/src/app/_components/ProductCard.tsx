@@ -24,7 +24,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           width={500}
           height={300}
         />
-        <h2 className="text-lg font-semibold">{product.name}</h2>
+        <h2 className="text-lg font-semibold rainbow-text">{product.name}</h2>
         <p className="text-gray-600">{product.category}</p>
         <p className="font-bold mt-2">${product.price.toFixed(2)}</p>
       </div>
