@@ -43,20 +43,6 @@ const ProductList: React.FC = () => {
 
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
-          // <div
-          //   key={product.publicId}
-          //   className="border rounded-xl p-4 shadow hover:shadow-lg transition">
-          //   <Image
-          //     src={product.imageUrl}
-          //     alt={product.name}
-          //     width={500}
-          //     height={300}
-          //     className="w-full h-48 object-cover rounded-lg mb-4"
-          //   />
-          //   <h2 className="text-lg font-semibold">{product.name}</h2>
-          //   <p className="text-gray-600">{product.category}</p>
-          //   <p className="font-bold mt-2">${product.price.toFixed(2)}</p>
-          // </div>
           <ProductCard key={product.publicId} product={product} />
         ))}
       </div>
