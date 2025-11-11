@@ -9,8 +9,8 @@ interface Product {
   description: string;
 }
 
-export default async function ProductDetails({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products/${id}`, {
     cache: "no-store",
